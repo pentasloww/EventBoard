@@ -17,7 +17,9 @@ public class EventServlet extends HttpServlet {
 
     @Override
     public void init() {
-        eventService = new EventService();
+        org.example.repository.EventRepository eventRepository = new org.example.repository.EventRepository();
+
+        this.eventService = new EventService(eventRepository);
     }
 
     @Override

@@ -19,8 +19,11 @@ public class EventDetailServlet extends HttpServlet {
 
     @Override
     public void init() {
-        eventService = new EventService();
-        participantService = new ParticipantService();
+        org.example.repository.EventRepository eventRepository = new org.example.repository.EventRepository();
+        org.example.repository.ParticipantRepository participantRepository = new org.example.repository.ParticipantRepository();
+
+        this.eventService = new EventService(eventRepository);
+        this.participantService = new ParticipantService(participantRepository, this.eventService);
     }
 
     @Override
